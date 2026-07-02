@@ -46,6 +46,9 @@ typedef struct {
 } Vec3Array;
 
 static inline double km_clamp(double value, double min, double max) {
+    if (min > max)
+        return KM_VEC_RESULT_INVALID_ARG;
+
     if (value < min)
         return min;
 
@@ -57,15 +60,15 @@ static inline double km_clamp(double value, double min, double max) {
 
 static inline Vec2 km_vec2_create(double x, double y) { return (Vec2){x, y}; }
 
-static inline double km_vec2_length(Vec2 vec) {
-    return sqrt(vec.x * vec.x + vec.y * vec.y);
-}
+static inline double km_vec2_length(Vec2 vec) { return hypot(vec.x, vec.y); }
 
 static inline KmVectorResult km_vec2_translate(Vec2 *vec, Vec2 offset) {
     if (!vec)
         return KM_VEC_RESULT_INVALID_ARG;
 
-    *vec = km_vec2_create(vec->x + offset.x, vec->y + offset.y);
+    vec->x += offset.x;
+    vec->y += offset.y;
+
     return KM_VEC_RESULT_OK;
 }
 
