@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-project(KUTILS LANGUAGES C)
+project(kutils LANGUAGES C)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_STANDARD 99)
