@@ -8,6 +8,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_subdirectory(math)
 add_subdirectory(str)
 
-add_library(kutil INTERFACE)
+add_library(kutils INTERFACE)
 
-target_link_libraries(kutil INTERFACE str math)
+target_link_libraries(kutils INTERFACE str math)
